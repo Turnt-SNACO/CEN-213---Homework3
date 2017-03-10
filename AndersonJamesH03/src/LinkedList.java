@@ -27,7 +27,34 @@ public class LinkedList {
     	size++;
     }
 	
-	//iterates forward through the list and returns a string that is comma delimited containing the content of each node.
+	//sets the next node of the node behind the current node to be equal 
+	//to the next node of the current effectively deleting from the list
+	public void deleteNode(Node node){
+		if (node!=origin)
+			node.getPrevious().setNext(node.getNext());
+		else
+			origin=node.getNext();
+		if (node!=end)
+			node.getNext().setPrevious(node.getPrevious());
+		else
+			end=node.getPrevious();
+		size--;
+	}
+	
+	//searches for node based on content and returns the node
+	public Node findNode(String content){
+		Node current = origin;
+		while(current.getNext()!=null){
+    		if (current.getContent()==content)
+    			return current;
+    		else
+    			current=current.getNext();
+		}
+		return null;
+	}
+		
+	//iterates forward through the list and returns a string that is comma 
+	//delimited containing the content of each node.
 	public String printForward(){
 		String list="";
 		Node current=origin;
@@ -39,7 +66,8 @@ public class LinkedList {
 		return list;
 	}
 	
-	//iterates backwards through the list and returns a string that is comma delimited containing the content of each node.
+	//iterates backwards through the list and returns a string that is comma 
+	//delimited containing the content of each node.
 	public String printReverse(){
 		String list="";
 		Node current=end;
