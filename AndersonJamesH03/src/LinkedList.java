@@ -106,13 +106,16 @@ public class LinkedList {
 	 */
 	public String printForward(){
 		String list="";
-		Node current=origin;
-		while(current.getNext()!=null){
-			list+=current.getContent()+", ";
-    		current=current.getNext();
-    	}
-		list+=current.getContent();
-		return list;
+		if (origin!=null){
+			Node current=origin;
+			while(current.getNext()!=null){
+				list+=current.getContent()+", ";
+	    		current=current.getNext();
+	    	}
+			list+=current.getContent();
+			return list;
+		}
+		return "The list is empty.";
 	}
 	
 	/**
@@ -125,23 +128,33 @@ public class LinkedList {
 	 */
 	public String printReverse(){
 		String list="";
-		Node current=end;
-		while(current.getPrevious()!=null){
-			list+=current.getContent()+", ";
-    		current=current.getPrevious();
-    	}
-		list+=current.getContent();
-		return list;
+		if (end!=null){
+			Node current=end;
+			while(current.getPrevious()!=null){
+				list+=current.getContent()+", ";
+	    		current=current.getPrevious();
+	    	}
+			list+=current.getContent();
+			return list;
+		}
+		return "The list is empty";
 	}
 	
 	/**
 	 * <b><i>detelteList</i></b> - Deletes the list.
 	 * <p>
-	 * sets the origin node and end node to null removing all items from the list.
+	 * Iterates through all elements in the list and sets pointers to be null then sets origin and end to null.
 	 * <p>
 	 * @author james_2pes9af
 	 */
 	public void deleteList(){
+		Node current=origin;
+		while(current!=null){
+			current.setPrevious(null);
+			Node temp = current.getNext();
+			current.setNext(null);
+			current=temp;
+		}
 		origin= null;
 		end=null;
 	}
