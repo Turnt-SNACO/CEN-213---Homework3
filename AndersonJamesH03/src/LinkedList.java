@@ -133,4 +133,16 @@ public class LinkedList {
 		list+=current.getContent();
 		return list;
 	}
+	
+	/**
+	 * <b><i>detelteList</i></b> - Deletes the list.
+	 * <p>
+	 * sets the origin node and end node to null removing all items from the list.
+	 * <p>
+	 * @author james_2pes9af
+	 */
+	public void deleteList(){
+		origin= null;
+		end=null;
+	}
 }
