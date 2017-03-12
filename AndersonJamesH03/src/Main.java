@@ -30,6 +30,13 @@ public class Main {
 		System.out.println(l.printReverse());
 		System.out.println(l.getSize());
 		
+		l.deleteList();
+		System.out.println(l.printForward());
+		System.out.println(l.printReverse());
+		
+		l.addToEnd(ace);
+		System.out.println(l.printForward());
+		
 		
 	}
 }
