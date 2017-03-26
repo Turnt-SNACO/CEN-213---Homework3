@@ -7,11 +7,11 @@ public class Main {
 		Node spade = new Node (2, "spade");
 		Node diamond = new Node (3, "diamond");
 		
-		//test add to end
-		l.addToEnd(ace);
-		l.addToEnd(club);
-		l.addToEnd(spade);
-		l.addToEnd(diamond);
+		//test insert alphabetically
+		l.insertAlphabetically(club);
+		l.insertAlphabetically(ace);
+		l.insertAlphabetically(spade);
+		l.insertAlphabetically(diamond);
 		
 		//test prints
 		System.out.println(l.printForward());

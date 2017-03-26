@@ -158,4 +158,76 @@ public class LinkedList {
 		origin= null;
 		end=null;
 	}
+	
+	/**
+	 * <b><i>insertBefore</i></b> - Inserts Node (insert) before Node (node).
+	 * <p>
+	 * @param insert - node being inserted
+	 * @param node - Node that will come after (insert).
+	 * @author james_2pes9af
+	 */
+	public void insertBefore(Node insert, Node node){
+		if (node==origin)
+			origin=insert;
+		else{
+			insert.setPrevious(node.getPrevious());
+			node.getPrevious().setNext(insert);
+		}
+		node.setPrevious(insert);
+		insert.setNext(node);
+		size++;
+	}
+	
+	/**
+	 * <b><i>insertAfter</i></b> - INserts Node (insert) after Node (node).
+	 * <p>
+	 * @param insert - Node being inserted
+	 * @param node - Node that will come before (insert).
+	 * @author james_2pes9af
+	 */
+	public void insertAfter(Node insert, Node node){
+		if (end==node)
+			end=insert;
+		else
+			insert.setNext(node.getNext());
+		node.setNext(insert);
+		insert.setPrevious(node);
+		size++;
+	}
+	
+	/**
+	 * <b><i>insertAlphabetically</i></b>  - Inserts Node (node) into the list in alphabetical order.
+	 * <p>
+	 * @param node - Node being inserted
+	 * @author james_2pes9af
+	 */
+	@SuppressWarnings("unchecked")
+	public void insertAlphabetically(Node node){
+		if (origin==null){
+			origin=node;
+			end=node;
+		} else if (origin==end){
+			if (node.getContent().compareTo(origin.getContent())>=0)
+				insertAfter(node,origin);
+			else
+				insertBefore(node,origin);
+		}
+		else{
+			Node current=origin;
+			while (current!=null){
+				if (node.getContent().compareTo(current.getContent())>0){
+					if (current==end){
+						addToEnd(node);
+						break;
+					}
+					else
+						current=current.getNext();
+				}
+				else {
+					insertBefore(node, current);
+					break;
+				}
+			}
+		}
+	}
 }
